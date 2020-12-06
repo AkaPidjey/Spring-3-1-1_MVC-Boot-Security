@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USER PAGE</title>
+</head>
+<body>
+    <div align="center">
+        <div>
+            <tr>
+                <th>
+                    <h1>USER PAGE</h1>
+                </th>
+            </tr>
+        </div>
+
+        <div>
+            <table border="1">
+                <tbody>
+                    <tr>
+                        <th><p> Id </p></th>
+                        <th><p> Name </p></th>
+                        <th><p> Lastname </p></th>
+                        <th><p> Age </p></th>
+                        <th><p> Login </p></th>
+                        <th><p> Password </p></th>
+                        <th><p> Role </p></th>
+                    </tr>
+
+                    <tr align="center">
+                        <td><p th:text="${user.getId()}">Value</p></td>
+                        <td><p th:text="${user.getName()}">Value</p></td>
+                        <td><p th:text="${user.getLastname()}">Value</p></td>
+                        <td><p th:text="${user.getAge()}">Value</p></td>
+                        <td><p th:text="${user.getLogin()}"> Value</p></td>
+                        <td><p th:text="${user.getPasswordReal()}">Value</p></td>
+                        <td><p th:each="role:${user.getRoles()}"
+                           th:text="${role.name}">Value</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div>
+            <tr>
+                <td><a th:href="@{/logout}"><input type="submit" value="LOGOUT"></a></td>
+            </tr>
+        </div>
+
+
+    </div>
+</body>
+</html>
+
+
+
+<!--version 1.0-->
+
+<!--<body>-->
+<!--<table align="center" border="1">-->
+<!--    <tbody>-->
+
+<!--    <tr>-->
+<!--        <th><label for="id"> Id </label></th>-->
+<!--        <th><label for="name"> Name </label></th>-->
+<!--        <th><label for="lastname"> Lastname </label></th>-->
+<!--        <th><label for="age"> Age </label></th>-->
+<!--        <th><label for="login"> Login </label></th>-->
+<!--        <th><label for="password"> Password </label></th>-->
+<!--        <th><label for="role"> Role </label></th>-->
+<!--    </tr>-->
+
+<!--    <tr>-->
+<!--        <th><a th:text="${user.getID()}" id="id"> Value </a></th>-->
+<!--        <th><a th:text="${user.getName()}" id="name"> Value </a></th>-->
+<!--        <th><a th:text="${user.getLastname()}" id="lastname"> Value </a></th>-->
+<!--        <th><a th:text="${user.getAge()}" id="age">  Value </a></th>-->
+<!--        <th><a th:text="${user.getLogin()}" id="login"> Value </a></th>-->
+<!--        <th><a th:text="${user.getPasswordConfirm()}" id="password"> Value </a></th>-->
+<!--        <th><a th:each="role:${user.getRoles()}"-->
+<!--               th:text="${role.name}" id="role"> Value </a></th>-->
+<!--    </tr>-->
+
+<!--    <tr>-->
+<!--        <th align="center"><a th:href="@{/logout}"><input type="submit" value="LOGOUT"></a></th>-->
+<!--    </tr>-->
+
+<!--    </tbody>-->
+<!--</table>-->
+<!--</body>-->
+
+
+
+<!--version 2.0-->
+
+<!--<body>-->
+<!--<div align="center">-->
+<!--    <div>-->
+<!--        <tr>-->
+<!--            <th>-->
+<!--                <h1>USER PAGE</h1>-->
+<!--            </th>-->
+<!--        </tr>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <table border="1">-->
+<!--            <tbody>-->
+<!--            <tr>-->
+<!--                <th><label for="id"> Id </label></th>-->
+<!--                <th><label for="name"> Name </label></th>-->
+<!--                <th><label for="lastname"> Lastname </label></th>-->
+<!--                <th><label for="age"> Age </label></th>-->
+<!--                <th><label for="login"> Login </label></th>-->
+<!--                <th><label for="password"> Password </label></th>-->
+<!--                <th><label for="role"> Role </label></th>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <p th:text="${user.getID()}" id="id"> Value </p>-->
+<!--                <p th:text="${user.getName()}" id="name"> Value </p>-->
+<!--                <p th:text="${user.getLastname()}" id="lastname"> Value </p>-->
+<!--                <p th:text="${user.getAge()}" id="age">  Value </p>-->
+<!--                <p th:text="${user.getLogin()}" id="login"> Value </p>-->
+<!--                <p th:text="${user.getPasswordConfirm()}" id="password"> Value </p>-->
+<!--                <p th:each="role:${user.getRoles()}"-->
+<!--                   th:text="${role.name}" id="role"> Value </p>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div>-->
+<!--        <tr>-->
+<!--            <th align="center" ><a th:href="@{/logout}"><input type="submit" value="LOGOUT"></a></th>-->
+<!--        </tr>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->

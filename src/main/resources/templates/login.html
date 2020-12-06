@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+<body>
+    <div align="center">
+        <div>
+            <tr>
+                <th>
+                    <h1> LOGIN </h1>
+                </th>
+            </tr>
+        </div>
+
+        <div>
+            <tr>
+                <th>
+                    <h2> Enter your login and password</h2>
+                </th>
+            </tr>
+        </div>
+
+        <div>
+            <form method="post" action="/login">
+                <div>
+                    <table border="1">
+                        <tr>
+                            <th><label for="login"> Login: </label></th>
+                            <th><input name="login" id="login"></th>
+                        </tr>
+
+                        <tr>
+                            <th><label for="password"> Password: </label></th>
+                            <th><input name="password" id="password"></th>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div>
+                    <tr>
+                        <th><input type="submit" value="ENTER"></th>
+                    </tr>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div>
+            <tr>
+                <a href="/new_user">Create new User</a>
+            </tr>
+        </div>
+    </div>
+</body>
+</html>

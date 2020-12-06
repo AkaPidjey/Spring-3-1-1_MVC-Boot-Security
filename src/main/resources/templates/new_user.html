@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATE NEW USER</title>
+</head>
+<body>
+    <div align="center">
+        <div>
+            <div>
+                <tr>
+                    <th>
+                        <h1> CREATE NEW USER </h1>
+                    </th>
+                </tr>
+            </div>
+        </div>
+
+        <div>
+            <form method="post" th:action="@{/new_user}">
+                <div>
+                    <table border="1">
+                        <tr>
+                            <th><label for="name"> Name: </label></th>
+                            <th><input th:name="name" type="text" id="name"></th>
+                        </tr>
+
+                        <tr>
+                            <th><label for="lastname"> Lastname: </label></th>
+                            <th><input th:name="lastname" type="text" id="lastname"></th>
+                        </tr>
+
+                        <tr>
+                            <th><label for="age"> Age: </label></th>
+                            <th><input th:name="age" type="number" id="age"></th>
+                        </tr>
+
+                        <tr>
+                            <th><label for="login"> Login: </label></th>
+                            <th><input th:name="login" type="text" id="login"></th>
+                        </tr>
+
+                        <tr>
+                            <th><label for="password"> Password: </label></th>
+                            <th><input th:name="password" type="text" id="password"></th>
+                        </tr>
+
+                        <tr>
+                            <th><label for="role" id="role"> Role: </label></th>
+                            <th><label for="user"> User:</label>
+                                <input th:name="role" type="radio" value="ROLE_USER" id="user"/>
+                                <label for="admin"> Admin:</label>
+                                <input th:name="role" type="radio" value="ROLE_ADMIN" id="admin"/>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div>
+                    <tr>
+                        <th><input type="submit" value="CREATE"></th>
+                    </tr>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div>
+            <tr>
+                <a href="/login">LOGIN</a>
+            </tr>
+        </div>
+    </div>
+</body>
+</html>

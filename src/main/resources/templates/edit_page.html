@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT USER</title>
+</head>
+<body>
+    <div align="center">
+        <div>
+            <tr>
+                <th>
+                    <h1>EDIT USER</h1>
+                </th>
+            </tr>
+        </div>
+
+        <div>
+            <table border="1">
+                <tbody>
+                    <tr>
+                        <th><p> Id </p></th>
+                        <th><p> Name </p></th>
+                        <th><p> Lastname </p></th>
+                        <th><p> Age </p></th>
+                        <th><p> Login </p></th>
+                        <th><p> Password </p></th>
+                        <th><p> Role </p></th>
+                        <th><p> Edit </p></th>
+                    </tr>
+
+                    <tr align="center">
+                        <td><p th:text="${user.getId()}">Value</p></td>
+                        <td><p th:text="${user.getName()}">Value</p></td>
+                        <td><p th:text="${user.getLastname()}">Value</p></td>
+                        <td><p th:text="${user.getAge()}">Value</p></td>
+                        <td><p th:text="${user.getLogin()}"> Value</p></td>
+                        <td><p th:text="${user.getPasswordReal()}">Value</p></td>
+                        <td><p th:each="role:${user.getRoles()}"
+                               th:text="${role.name}">Value</p></td>
+                    </tr>
+
+                    <tr align="center">
+                        <form th:method="post" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+                            <td><p> Input new info </p></td>
+                            <td><input th:field="*{name}" type="text" value="${user.getName()}"/></td>
+                            <td><input th:field="*{lastname}" type="text" value="${user.getLastname()}"/></td>
+                            <td><input th:field="*{age}" type="text" value="${user.getAge()}"/></td>
+                            <td><input th:field="*{login}" type="text" value="${user.getLogin()}"/></td>
+                            <td><input th:field="*{password}" type="text" value="${user.getPassword()}"/></td>
+<!--                            <td><input th:field="*{roles}" type="text" value="${user.getRoles()}"/></td>-->
+                            <td><label for="role" id="role"> Role: </label>
+                                <label for="user"> User:</label>
+                                <input th:name="role" type="radio" value="ROLE_USER" id="user"/>
+                                <label for="admin"> Admin:</label>
+                                <input th:name="role" type="radio" value="ROLE_ADMIN" id="admin"/>
+                            </td>
+                            <td><input type="submit" value="Edit" ></td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div>
+            <tr>
+                <th>
+                    <a th:href="@{/admin/all_users}"> <input type="submit" value="RETURN"> </a>
+                </th>
+            </tr>
+        </div>
+        <br>
+        <div>
+            <tr>
+                <th>
+                    <a th:href="@{/logout}"> <input type="submit" value="LOGOUT"> </a>
+                </th>
+            </tr>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--version 1.0-->
+
+<!--<body>-->
+<!--<div align="center">-->
+<!--    <div>-->
+<!--        <tr>-->
+<!--            <th>-->
+<!--                <h1>EDIT USER</h1>-->
+<!--            </th>-->
+<!--        </tr>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <table border="1">-->
+
+<!--            <tr>-->
+<!--                <th><label for="id"> Id </label></th>-->
+<!--                <th><label for="name"> Name </label></th>-->
+<!--                <th><label for="lastname"> Lastname </label></th>-->
+<!--                <th><label for="age"> Age </label></th>-->
+<!--                <th><label for="login"> Login </label></th>-->
+<!--                <th><label for="password"> Password </label></th>-->
+<!--                <th><label for="role"> Role </label></th>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--                <td><a th:text="${user.getID()}" id="id"> Id </a></td>-->
+<!--                <td><a th:text="${user.getName()}" id="name"> Name </a></td>-->
+<!--                <td><a th:text="${user.getLastname()}" id="lastname"> Lastname </a></td>-->
+<!--                <td><a th:text="${user.getAge()}" id="age"> Age </a></td>-->
+<!--                <td><a th:text="${user.getLogin()}" id="login"> Login </a></td>-->
+<!--                <td><a th:text="${user.getPasswordConfirm()}" id="password"> Password </a></td>-->
+<!--                <td><a th:text="${user.getRole()}" id="role"> Role </a></td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--                <form th:method="POST" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">-->
+<!--                    <td><input type="submit" value="Edit" ></td>-->
+<!--                    <td><input th:field="*{name}" type="text" value="${user.getName()}"/></td>-->
+<!--                    <td><input th:field="*{lastname}" type="text" value="${user.getLastname()}"/></td>-->
+<!--                    <td><input th:field="*{age}" type="text" value="${user.getAge()}"/></td>-->
+<!--                    <td><input th:field="*{login}" type="text" value="${user.getLogin()}"/></td>-->
+<!--                    <td><input th:field="*{password}" type="text" value="${user.getPassword()}"/></td>-->
+<!--                    <td><input th:field="*{role}" type="text" value="${user.getRole()}"/></td>-->
+<!--                </form>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div>-->
+<!--        <tr>-->
+<!--            <th>-->
+<!--                <a th:href="@{/admin/all_users}"> <input type="submit" value="Return"> </a>-->
+<!--                <a th:href="@{/logout}"> <input type="submit" value="Logout"> </a>-->
+<!--            </th>-->
+<!--        </tr>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
