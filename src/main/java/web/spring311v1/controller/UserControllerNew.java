@@ -1,8 +1,6 @@
 package web.spring311v1.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,8 +10,6 @@ import web.spring311v1.model.Role;
 import web.spring311v1.model.User;
 import web.spring311v1.service.UserService;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,15 +40,6 @@ public class UserControllerNew {
             roleSet.add(userService.getRoleByName("ROLE_USER").get());
         }
         user.setRoles(roleSet);
-
-
-
-//        if (role.equals("roleAdmin")) {
-//            user.setRoles(new HashSet<>(new Role().getName());
-//            user.getRoles().add(userService.getRoleByName("ROLE_ADMIN").get());
-//        }
-//        user.getRoles().add(userService.getRoleByName("ROLE_USER"));
-
         userService.createNewUser(user);
         return "redirect:/new_user";
     }

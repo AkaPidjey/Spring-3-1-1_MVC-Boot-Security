@@ -61,16 +61,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-//    public User(String name, String lastname, int age, String login, String password, Set<Role> roles) {
-//        this.name = name;
-//        this.lastname = lastname;
-//        this.age = age;
-//        this.login = login;
-//        this.password = password;
-//        this.passwordReal = password;
-//        this.roles = roles;
-//    }
-
     @Override
     public String toString() {
         return "User: id = " + id + ", name = " + name + " " + lastname + " " + age

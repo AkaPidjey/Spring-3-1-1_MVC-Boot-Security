@@ -3,7 +3,6 @@ package web.spring311v1.service;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,26 +31,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional
     public void createNewUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPasswordReal()));
-//        Set<Role> adminSet = new HashSet<>();
-//        Set<Role> userSet = new HashSet<>();
-//        adminSet.add(new Role("ROLE_ADMIN"));
-//        userSet.add(new Role("ROLE_USER"));
-//        if (user.getRoles().equals(adminSet)) {
-//            user.getRoles().add(userDao.getRoleByName("ROLE_ADMIN").get());
-//        }
-//        user.getRoles().add( userDao.getRoleByName("ROLE_USER").get());
-
-//
-//        user.setRoles(new HashSet<>());
-//
-//        if (user.getRoles().toString().equals("ROLE_ADMIN")) {
-//            user.getRoles().add(userDao.getRoleByName("ROLE_ADMIN").get());
-//            user.getRoles().add(userDao.getRoleByName("ROLE_USER").get());
-//        } else {
-//            user.getRoles().add( userDao.getRoleByName("ROLE_USER").get());
-//        }
-
-
         userDao.createNewUser(user);
     }
 
@@ -60,23 +39,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void editUser(User user) {
         user.setPasswordReal(user.getPassword());
         user.setPassword(passwordEncoder.encode(user.getPasswordReal()));
-//        if (user.getRoles().size() > 1) {
-//            user.getRoles().add(userDao.getRoleByName("ROLE_ADMIN").get());
-//            user.getRoles().add(userDao.getRoleByName("ROLE_USER").get());
-//        } else {
-//            user.getRoles().add( userDao.getRoleByName("ROLE_USER").get());
-//        }
-
-
-//        Set<Role> roleSet = new HashSet<>();
-//        if (role.equals("ROLE_ADMIN")){
-//            roleSet.add(userService.getRoleByName("ROLE_ADMIN").get());
-//            roleSet.add(userService.getRoleByName("ROLE_USER").get());
-//        } else {
-//            roleSet.add(userService.getRoleByName("ROLE_USER").get());
-//        }
-
-
         userDao.editUser(user);
     }
 
@@ -113,13 +75,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-        User user = userDao.getUserByLogin(login).get();
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-        return user;
+        return userDao.getUserByLogin(login).get();
     }
+
+//    @Override
+//    @Transactional(readOnly = true)
+//    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+//
+//        User user = userDao.getUserByLogin(login).get();
+//        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+//        for (Role role : user.getRoles()) {
+//            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+//        }
+//        return user;
+//    }
 
 
 //    @Override
